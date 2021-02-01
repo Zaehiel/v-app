@@ -1,4 +1,4 @@
-# vuu-app
+# v-app
 
 ## Project setup
 ```

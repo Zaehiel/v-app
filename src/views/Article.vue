@@ -34,9 +34,17 @@
 
 <script>
 import { defineComponent } from 'vue';
+import { useStripTags } from '@/composables';
 import api from '@/api';
 
 export default defineComponent({
+  setup() {
+    const { stripTags } = useStripTags();
+    
+    return {
+      stripTags
+    };
+  },
   data() {
     return {
       isLoading: true,
@@ -52,14 +60,7 @@ export default defineComponent({
       body: this.stripTags(response.body),
     };
     this.isLoading = false;
-  },
-  methods: {
-    stripTags(content) {
-      const expression = /(<([^>]+)>)/ig;
-      return content.replace(expression, '');
-    }
-  },
-  
+  },  
 });
 </script>
 

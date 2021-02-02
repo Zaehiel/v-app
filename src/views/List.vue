@@ -1,18 +1,52 @@
 <template>
   <div class="list">
     <h1 class="heading">Nimekiri</h1>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="list-body">
+      <div class="list-body__items">
+        rendered list here
+      </div>
+      <div class="list-body__pagination">
+        <Pagination :pages="10" @page-navigation="updateActivePage" />
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { defineComponent } from 'vue';
+import Pagination from '@/components/Pagination/Pagination';
+import { useStripTags } from '@/composables';
+import api from '@/api';
 
-export default {
-  name: 'List',
+export default defineComponent({
   components: {
-    HelloWorld
+    Pagination,
+  },
+  setup() {
+    const { stripTags } = useStripTags();
+    
+    return {
+      stripTags
+    };
+  },
+  data() {
+    return {
+      isLoading: true,
+      listData: [],
+      stats: {},
+    }
+  },
+  async created() {
+    const { response } = await api('list');
+    this.isLoading = false;
+    this.stats = response.stats;
+    this.listData = { ...response.list };
+  },
+  methods: {
+    updateActivePage(pageNumber) {
+      console.log(pageNumber); // todo: placeholder
+    }
   }
-}
+})
 </script>

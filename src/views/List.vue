@@ -1,5 +1,6 @@
 <template>
-  <div class="home">
+  <div class="list">
+    <h1 class="heading">Nimekiri</h1>
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>

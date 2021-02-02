@@ -4,6 +4,10 @@ import List from '../views/List.vue'
 const routes = [
   {
     path: '/',
+    redirect: '/list'
+  },
+  {
+    path: '/list',
     name: 'List',
     component: List
   },

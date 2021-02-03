@@ -65,6 +65,17 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+.article-intro {
+  margin: 40px 0;
+  font-size: 24px;
+  font-weight: 700;;
+
+}
+
+.article-body {
+  font-size: 24px;
+}
+
 .article-images {
   display: flex;
   flex-direction: column;

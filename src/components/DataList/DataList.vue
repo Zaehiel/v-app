@@ -196,10 +196,6 @@ export default defineComponent({
     &--active {
       background: #ff57a2;
     }
-
-    &_description {
-
-    }
   }
 }
 </style>
